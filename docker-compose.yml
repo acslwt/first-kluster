@@ -1,0 +1,10 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: demo-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: demo
+    ports:
+      - "3306:3306"

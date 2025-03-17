@@ -1,0 +1,8 @@
+include:
+  - project: 'smile_hub/tools/gitlab_ci'
+    ref: ${VERSION_PIPELINE}
+    file: '.springboot-ci.yml'
+
+variables:
+  SPRING_ENABLE_UNIT_TEST: "true"
+  SPRING_ENABLE_INTEGRATION_TEST: "true"

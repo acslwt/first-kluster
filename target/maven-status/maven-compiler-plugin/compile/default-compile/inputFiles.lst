@@ -1,0 +1,9 @@
+/home/ayoch/Bureau/Formations/Spring_Security/spring-security/section2/demo/src/main/java/com/example/demo/DemoApplication.java
+/home/ayoch/Bureau/Formations/Spring_Security/spring-security/section2/demo/src/main/java/com/example/demo/config/DemoSecurityConfig.java
+/home/ayoch/Bureau/Formations/Spring_Security/spring-security/section2/demo/src/main/java/com/example/demo/config/DemoUserDetailsService.java
+/home/ayoch/Bureau/Formations/Spring_Security/spring-security/section2/demo/src/main/java/com/example/demo/controller/AccountController.java
+/home/ayoch/Bureau/Formations/Spring_Security/spring-security/section2/demo/src/main/java/com/example/demo/controller/HelloController.java
+/home/ayoch/Bureau/Formations/Spring_Security/spring-security/section2/demo/src/main/java/com/example/demo/controller/UserController.java
+/home/ayoch/Bureau/Formations/Spring_Security/spring-security/section2/demo/src/main/java/com/example/demo/model/Customer.java
+/home/ayoch/Bureau/Formations/Spring_Security/spring-security/section2/demo/src/main/java/com/example/demo/model/User.java
+/home/ayoch/Bureau/Formations/Spring_Security/spring-security/section2/demo/src/main/java/com/example/demo/repository/CustomerRepository.java
