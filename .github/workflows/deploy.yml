@@ -29,8 +29,8 @@ jobs:
 
       - name: Build and Push Docker Image (latest)
         run: |
-          docker build -t gcr.io/PROJECT_ID/my-app:latest .
-          docker push gcr.io/PROJECT_ID/my-app:latest
+          docker build -t ayoch/spring-app:latest .
+          docker push ayoch/spring-app:latest
 
       - name: Configure kubectl
         run: |
