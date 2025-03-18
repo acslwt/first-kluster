@@ -1,0 +1,41 @@
+name: Deploy to GKE
+
+on:
+  push:
+    branches:
+      - main  # Déclencher le workflow sur la branche principale
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Authenticate with GCP
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Setup Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: PROJECT_ID
+
+      - name: Configure Docker authentication
+        run: |
+          gcloud auth configure-docker gcr.io
+
+      - name: Build and Push Docker Image (latest)
+        run: |
+          docker build -t gcr.io/PROJECT_ID/my-app:latest .
+          docker push gcr.io/PROJECT_ID/my-app:latest
+
+      - name: Configure kubectl
+        run: |
+          gcloud container clusters get-credentials my-cluster --zone europe-west1-b --project PROJECT_ID
+
+      - name: Deploy to GKE
+        run: |
+          kubectl apply -f k8s/
