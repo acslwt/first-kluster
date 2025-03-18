@@ -36,6 +36,8 @@ jobs:
           docker push ayoch/spring-app:latest
 
       - name: Configure kubectl
+        env:
+          USE_GKE_GCLOUD_AUTH_PLUGIN: "True"
         run: |
           gcloud container clusters get-credentials mon-cluster --zone europe-west1 --project ${{ secrets.GCP_PROJECT_ID }}
 
