@@ -21,7 +21,7 @@ jobs:
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
         with:
-          project_id: PROJECT_ID
+          project_id: ${{ PROJECT_ID }}
 
       - name: Configure Docker authentication
         run: |
@@ -34,7 +34,7 @@ jobs:
 
       - name: Configure kubectl
         run: |
-          gcloud container clusters get-credentials my-cluster --zone europe-west1-b --project PROJECT_ID
+          gcloud container clusters get-credentials my-cluster --zone europe-west1-b --project ${{ PROJECT_ID }}
 
       - name: Deploy to GKE
         run: |
