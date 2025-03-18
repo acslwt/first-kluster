@@ -37,7 +37,7 @@ jobs:
 
       - name: Configure kubectl
         run: |
-          gcloud container clusters get-credentials mon-cluster --zone europe-west1-b --project ${{ secrets.GCP_PROJECT_ID }}
+          gcloud container clusters get-credentials mon-cluster --zone europe-west1 --project ${{ secrets.GCP_PROJECT_ID }}
 
       - name: Deploy to GKE
         run: |
