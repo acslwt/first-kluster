@@ -23,8 +23,7 @@ public class DemoSecurityConfig {
         http.csrf(c -> c.disable())
                 .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
-                        .requestMatchers("/register","/welcome").permitAll()
-                        .requestMatchers("/myAccount").authenticated());
+                        .requestMatchers("/register","/welcome").permitAll());
 
         http.httpBasic(withDefaults());
         http.formLogin(withDefaults());
