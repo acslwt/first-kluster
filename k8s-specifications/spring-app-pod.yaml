@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: spring-app
-          image: gcr.io/mon-projet/mon-app:latest
+          image: ayoch/spring-app:latest
           ports:
             - name: http
               containerPort: 80
