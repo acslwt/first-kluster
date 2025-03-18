@@ -30,6 +30,10 @@ jobs:
       - name: Login to Docker Hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
+      - name: Build the Maven project
+        run: |
+          mvn clean package -DskipTests  # Construire le projet Maven, générer le .jar sans les tests
+
       - name: Build and Push Docker Image (latest)
         run: |
           docker build -t ayoch/spring-app:latest .
