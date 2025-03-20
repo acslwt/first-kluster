@@ -40,10 +40,15 @@ jobs:
         run: |
           mvn clean package -DskipTests  # Construire le projet Maven, générer le .jar sans les tests
 
-      - name: Build and Push Docker Image (latest)
+      - name: Build and Push Docker Image
         run: |
-          docker build -t ayoch/spring-app:latest .
+          TAG=$(git rev-parse --short HEAD)  # Récupérer le hash du commit
+          docker build -t ayoch/spring-app:$TAG .
+          docker tag ayoch/spring-app:$TAG ayoch/spring-app:latest
+          docker push ayoch/spring-app:$TAG
           docker push ayoch/spring-app:latest
+          echo "IMAGE_TAG=$TAG" >> $GITHUB_ENV
+
 
       - name: Configure kubectl
         env:
@@ -58,6 +63,7 @@ jobs:
       - name: Deploy to GKE
         run: |
           kubectl apply -f k8s-specifications/
+          kubectl set image deployment/spring-app spring-app=ayoch/spring-app:$IMAGE_TAG
           kubectl rollout restart deployment spring-app
           kubectl rollout restart deployment mysql
           
